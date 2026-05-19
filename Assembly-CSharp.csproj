@@ -78,6 +78,7 @@
     <Compile Include="Assets\scene1_prefab\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Runtime\Components\GrainComponent.cs" />
     <Compile Include="Assets\scene1_prefab\VIRTI\VOXEL-Forniture-FREE\Example\Standard Assets\CrossPlatformInput\Scripts\PlatformSpecific\MobileInput.cs" />
     <Compile Include="Assets\scene1_prefab\VIRTI\VOXEL-Forniture-FREE\Example\Standard Assets\Utility\FOVKick.cs" />
+    <Compile Include="Assets\Scripts\BodyShapeManager.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\scene1_prefab\VIRTI\VOXEL-Forniture-FREE\Example\Standard Assets\Characters\FirstPersonCharacter\Scripts\RigidbodyFirstPersonController.cs" />
     <Compile Include="Assets\scene1_prefab\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Runtime\Components\AmbientOcclusionComponent.cs" />
@@ -151,7 +152,9 @@
     <Compile Include="Assets\scene1_prefab\VIRTI\VOXEL-Forniture-FREE\Example\Standard Assets\CrossPlatformInput\Scripts\InputAxisScrollbar.cs" />
     <Compile Include="Assets\Scripts\OpeningCallSequence.cs" />
     <Compile Include="Assets\scene1_prefab\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Runtime\Models\UserLutModel.cs" />
+    <Compile Include="Assets\Scripts\EatableSnack.cs" />
     <Compile Include="Assets\scene1_prefab\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Runtime\Models\AmbientOcclusionModel.cs" />
+    <Compile Include="Assets\Scripts\DumbbellExercise.cs" />
     <Compile Include="Assets\scene1_prefab\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Runtime\Models\VignetteModel.cs" />
   </ItemGroup>
   <ItemGroup>

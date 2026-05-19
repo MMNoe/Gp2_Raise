@@ -4,11 +4,15 @@ using UnityEngine;
 [RequireComponent(typeof(OVRCameraRig))]
 public class SwingLocomotion : MonoBehaviour
 {
-    [Header("Speed")]
-    [SerializeField] private float maxSpeed = 3.0f;
-    [SerializeField] private float deadzone = 0.15f;
-    [SerializeField] private float speedSmoothing = 8f;
-    [SerializeField] private float maxSwingVelocity = 2.5f;
+    [Header("Speed (Normal / Min Weight)")]
+    [SerializeField] private float maxSpeed         = 2.0f;
+    [SerializeField] private float deadzone         = 0.02f;
+    [SerializeField] private float speedSmoothing   = 8f;
+    [SerializeField] private float maxSwingVelocity = 5f;
+
+    [Header("Speed (Max Weight / Slowest)")]
+    [SerializeField] private float heavyMaxSpeed = 0.6f;
+    [SerializeField] private float heavyDeadzone = 0.5f;
 
     [Header("Anti-phase")]
     [SerializeField, Range(0f, 1f)] private float antiphaseWeight = 0.6f;
@@ -17,10 +21,22 @@ public class SwingLocomotion : MonoBehaviour
     [SerializeField] private float gravityMultiplier = 2.0f;
     [SerializeField] private float stickToGroundForce = 10f;
 
+#if UNITY_EDITOR
+    [Header("── Debug Info (read-only) ──")]
+    [SerializeField] private float _dbgRuntimeDeadzone;
+    [SerializeField] private float _dbgRuntimeMaxSpeed;
+    [SerializeField] private float _dbgCurrentSpeed;
+    [SerializeField] private float _dbgSwingFraction;
+    [SerializeField] private bool  _dbgIsWalking;
+#endif
+
     private CharacterController _cc;
     private Transform _leftHand, _rightHand, _centerEye;
     private Vector3 _leftPrevPos, _rightPrevPos;
     private float _currentSpeed, _verticalVelocity;
+
+    private float _runtimeMaxSpeed;
+    private float _runtimeDeadzone;
 
     // right controller Button A (Button.One) toggles locomotion on/off
     private bool _locomotionEnabled = true;
@@ -32,12 +48,27 @@ public class SwingLocomotion : MonoBehaviour
         _leftHand  = rig.leftHandAnchor;
         _rightHand = rig.rightHandAnchor;
         _centerEye = rig.centerEyeAnchor;
+
+        _runtimeMaxSpeed = maxSpeed;
+        _runtimeDeadzone = deadzone;
     }
 
     private void Start()
     {
         _leftPrevPos  = _leftHand.position;
         _rightPrevPos = _rightHand.position;
+    }
+
+    // Called by BodyShapeManager whenever weight changes; t=0 lightest, t=1 heaviest
+    public void SetWeightFactor(float t)
+    {
+        _runtimeDeadzone = Mathf.Lerp(deadzone, heavyDeadzone, t);
+        _runtimeMaxSpeed = Mathf.Lerp(maxSpeed, heavyMaxSpeed, t);
+        Debug.Log($"[Weight] t={t:F2} | deadzone={_runtimeDeadzone:F3} | maxSpeed={_runtimeMaxSpeed:F2}");
+#if UNITY_EDITOR
+        _dbgRuntimeDeadzone = _runtimeDeadzone;
+        _dbgRuntimeMaxSpeed = _runtimeMaxSpeed;
+#endif
     }
 
     private void Update()
@@ -50,11 +81,15 @@ public class SwingLocomotion : MonoBehaviour
     {
         float dt = Time.fixedDeltaTime;
 
+        bool wasWalking = _currentSpeed > 0.05f;
+
         // always update prev positions — prevents velocity spike when re-enabling locomotion
         Vector3 leftVel  = (_leftHand.position  - _leftPrevPos)  / dt;
         Vector3 rightVel = (_rightHand.position - _rightPrevPos) / dt;
         _leftPrevPos  = _leftHand.position;
         _rightPrevPos = _rightHand.position;
+
+        float swingFraction = 0f;
 
         if (_locomotionEnabled)
         {
@@ -69,29 +104,38 @@ public class SwingLocomotion : MonoBehaviour
             float rightAbs = Mathf.Abs(rightZ);
 
             // both hands must move — single-hand jitter or reach-out won't trigger locomotion
-            bool bothHandsActive = leftAbs > deadzone * 0.5f && rightAbs > deadzone * 0.5f;
+            bool bothHandsActive = leftAbs > _runtimeDeadzone * 0.5f && rightAbs > _runtimeDeadzone * 0.5f;
             float rawCombined = bothHandsActive ? leftAbs + rightAbs : 0f;
 
             float antiphaseScore = 0f;
-            if (rawCombined > deadzone * 2f)
+            if (rawCombined > _runtimeDeadzone * 2f)
                 antiphaseScore = Mathf.Clamp01(
                     -(leftZ * rightZ) / (leftAbs * rightAbs + 0.0001f));
 
             float effectiveCombined = rawCombined *
                 Mathf.Lerp(1f, antiphaseScore, antiphaseWeight);
 
-            float swingFraction = 0f;
-            if (effectiveCombined > deadzone)
+            if (effectiveCombined > _runtimeDeadzone)
                 swingFraction = Mathf.Clamp01(
-                    (effectiveCombined - deadzone) / (maxSwingVelocity - deadzone));
+                    (effectiveCombined - _runtimeDeadzone) / (maxSwingVelocity - _runtimeDeadzone));
 
-            _currentSpeed = Mathf.Lerp(_currentSpeed, swingFraction * maxSpeed,
+            _currentSpeed = Mathf.Lerp(_currentSpeed, swingFraction * _runtimeMaxSpeed,
                                        speedSmoothing * dt);
         }
         else
         {
             _currentSpeed = Mathf.Lerp(_currentSpeed, 0f, speedSmoothing * dt);
         }
+
+        bool isWalkingNow = _currentSpeed > 0.05f;
+        if (isWalkingNow != wasWalking)
+            Debug.Log($"[Locomotion] {(isWalkingNow ? "▶ START" : "■ STOP")} | speed={_currentSpeed:F2} | deadzone={_runtimeDeadzone:F3}");
+
+#if UNITY_EDITOR
+        _dbgSwingFraction = swingFraction;
+        _dbgCurrentSpeed  = _currentSpeed;
+        _dbgIsWalking     = isWalkingNow;
+#endif
 
         // recalculate heading outside the branch — needed for CC.Move regardless of toggle state
         Vector3 headFwdFinal = _centerEye.forward;
