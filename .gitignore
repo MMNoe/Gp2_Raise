@@ -28,3 +28,9 @@ Builds/
 
 # Crashlytics generated file
 crashlytics-build.properties
+
+# Per-user editor state
+UserSettings/
+
+# macOS system files
+**/.DS_Store
