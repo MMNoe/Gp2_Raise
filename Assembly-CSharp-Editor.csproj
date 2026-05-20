@@ -1,26 +1,21 @@
-﻿<Project ToolsVersion="Current">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <!-- Generated file, do not modify, your changes will be overwritten (use AssetPostprocessor.OnGeneratedCSProject) -->
   <PropertyGroup>
-    <BaseIntermediateOutputPath>Temp\obj\$(Configuration)\$(MSBuildProjectName)</BaseIntermediateOutputPath>
-    <IntermediateOutputPath>$(BaseIntermediateOutputPath)</IntermediateOutputPath>
-  </PropertyGroup>
-  <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
-  <ItemGroup>
-    <ProjectCapability Include="Unity" />
-  </ItemGroup>
-  <PropertyGroup>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <EnableDefaultItems>false</EnableDefaultItems>
-    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <LangVersion>9.0</LangVersion>
-    <Configurations>Debug;Release</Configurations>
+  </PropertyGroup>
+  <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
+    <ProjectGuid>{432B1EF4-BE68-3C6E-088E-E4A60EA99E87}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -44,63 +39,30 @@
     <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
-    <NoStandardLibraries>true</NoStandardLibraries>
-    <NoStdLib>true</NoStdLib>
     <NoConfig>true</NoConfig>
-    <DisableImplicitFrameworkReferences>true</DisableImplicitFrameworkReferences>
-    <MSBuildWarningsAsMessages>MSB3277</MSBuildWarningsAsMessages>
+    <NoStdLib>true</NoStdLib>
+    <AddAdditionalExplicitAssemblyReferences>false</AddAdditionalExplicitAssemblyReferences>
+    <ImplicitlyExpandNETStandardFacades>false</ImplicitlyExpandNETStandardFacades>
+    <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <PropertyGroup>
+    <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <UnityProjectGenerator>Package</UnityProjectGenerator>
     <UnityProjectGeneratorVersion>2.0.22</UnityProjectGeneratorVersion>
-    <UnityProjectGeneratorStyle>SDK</UnityProjectGeneratorStyle>
+    <UnityProjectGeneratorStyle>Legacy</UnityProjectGeneratorStyle>
     <UnityProjectType>Editor:5</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2022.3.62f3</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Users\NYCU-EC028\.vscode\extensions\visualstudiotoolsforunity.vstuc-1.2.2\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Users\User\Documents\GitHub\Gp2_Raise\Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.62f3\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.62f3\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\scene1_prefab\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Editor\PostProcessingMonitor.cs" />
-    <Compile Include="Assets\scene1_prefab\VIRTI\VOXEL-Forniture-FREE\Example\Standard Assets\Editor\CrossPlatformInput\CrossPlatformInputInitialize.cs" />
-    <Compile Include="Assets\scene1_prefab\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Editor\Models\MotionBlurModelEditor.cs" />
-    <Compile Include="Assets\scene1_prefab\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Editor\Models\VignetteModelEditor.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Editor\ReadmeEditor.cs" />
-    <Compile Include="Assets\scene1_prefab\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Editor\Models\ColorGradingModelEditor.cs" />
-    <Compile Include="Assets\scene1_prefab\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Editor\Utils\FxStyles.cs" />
-    <Compile Include="Assets\scene1_prefab\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Editor\PostProcessingBehaviourEditor.cs" />
-    <Compile Include="Assets\scene1_prefab\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Editor\PropertyDrawers\MinDrawer.cs" />
-    <Compile Include="Assets\scene1_prefab\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Editor\Monitors\HistogramMonitor.cs" />
-    <Compile Include="Assets\scene1_prefab\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Editor\PostProcessingInspector.cs" />
-    <Compile Include="Assets\scene1_prefab\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Editor\Monitors\WaveformMonitor.cs" />
-    <Compile Include="Assets\scene1_prefab\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Editor\PropertyDrawers\TrackballGroupDrawer.cs" />
-    <Compile Include="Assets\scene1_prefab\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Editor\PostProcessingFactory.cs" />
-    <Compile Include="Assets\scene1_prefab\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Editor\PostProcessingModelEditor.cs" />
-    <Compile Include="Assets\scene1_prefab\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Editor\Models\UserLutModelEditor.cs" />
-    <Compile Include="Assets\scene1_prefab\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Editor\Models\DepthOfFieldModelEditor.cs" />
-    <Compile Include="Assets\scene1_prefab\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Editor\Utils\EditorGUIHelper.cs" />
-    <Compile Include="Assets\scene1_prefab\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Editor\Utils\ReflectionUtils.cs" />
-    <Compile Include="Assets\scene1_prefab\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Editor\Utils\CurveEditor.cs" />
-    <Compile Include="Assets\scene1_prefab\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Editor\Models\ChromaticAberrationEditor.cs" />
-    <Compile Include="Assets\scene1_prefab\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Editor\Monitors\VectorscopeMonitor.cs" />
-    <Compile Include="Assets\scene1_prefab\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Editor\Models\AmbientOcclusionModelEditor.cs" />
-    <Compile Include="Assets\scene1_prefab\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Editor\Monitors\ParadeMonitor.cs" />
-    <Compile Include="Assets\scene1_prefab\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Editor\Attributes\PostProcessingModelEditorAttribute.cs" />
-    <Compile Include="Assets\scene1_prefab\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Editor\Models\EyeAdaptationModelEditor.cs" />
     <Compile Include="Assets\Scenes\SceneForest\_External\IL3DN\Scripts\Editor\IL3DN_Wind_Editor.cs" />
-    <Compile Include="Assets\scene1_prefab\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Editor\Models\DitheringModelEditor.cs" />
-    <Compile Include="Assets\scene1_prefab\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Editor\Models\AntialiasingModelEditor.cs" />
-    <Compile Include="Assets\scene1_prefab\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Editor\Models\DefaultPostFxModelEditor.cs" />
-    <Compile Include="Assets\scene1_prefab\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Editor\Models\ScreenSpaceReflectionModelEditor.cs" />
-    <Compile Include="Assets\scene1_prefab\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Editor\PropertyDrawers\GetSetDrawer.cs" />
-    <Compile Include="Assets\scene1_prefab\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Editor\Models\FogModelEditor.cs" />
-    <Compile Include="Assets\scene1_prefab\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Editor\Models\BuiltinDebugViewsEditor.cs" />
-    <Compile Include="Assets\scene1_prefab\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Editor\Utils\EditorResources.cs" />
-    <Compile Include="Assets\scene1_prefab\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Editor\Models\GrainModelEditor.cs" />
-    <Compile Include="Assets\scene1_prefab\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Editor\Models\BloomModelEditor.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -497,6 +459,10 @@
     </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.4\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Collections.LowLevel.ILSupport">
+      <HintPath>Library\PackageCache\com.unity.collections@1.2.4\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="nunit.framework">
@@ -1079,6 +1045,10 @@
       <HintPath>Library\ScriptAssemblies\Meta.XR.Editor.BuildingBlocks.AIBlocks.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.Collections">
+      <HintPath>Library\ScriptAssemblies\Unity.Collections.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.PlasticSCM.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
       <Private>False</Private>
@@ -1255,6 +1225,10 @@
       <HintPath>Library\ScriptAssemblies\AssistantCoreSDKRuntime.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="glTFast.dots">
+      <HintPath>Library\ScriptAssemblies\glTFast.dots.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.XR.Management">
       <HintPath>Library\ScriptAssemblies\Unity.XR.Management.dll</HintPath>
       <Private>False</Private>
@@ -1281,6 +1255,10 @@
     </Reference>
     <Reference Include="Unity.AI.Navigation">
       <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="glTFast.Editor">
+      <HintPath>Library\ScriptAssemblies\glTFast.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Meta.XR.BuildingBlocks.AIBlocks">
@@ -1535,6 +1513,10 @@
       <HintPath>Library\ScriptAssemblies\Meta.Net.endel.nativewebsocket.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="glTFast">
+      <HintPath>Library\ScriptAssemblies\glTFast.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.VisualScripting.State.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll</HintPath>
       <Private>False</Private>
@@ -1585,18 +1567,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Assembly-CSharp.csproj" />
+    <ProjectReference Include="Assembly-CSharp.csproj">
+      <Project>{10E9AAA2-EEB7-1938-7EA2-069375DF22DA}</Project>
+      <Name>Assembly-CSharp</Name>
+    </ProjectReference>
   </ItemGroup>
-  <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
-  <ItemGroup>
-    <ProjectCapability Remove="LaunchProfiles" />
-    <ProjectCapability Remove="SharedProjectReferences" />
-    <ProjectCapability Remove="ReferenceManagerSharedProjects" />
-    <ProjectCapability Remove="ProjectReferences" />
-    <ProjectCapability Remove="ReferenceManagerProjects" />
-    <ProjectCapability Remove="COMReferences" />
-    <ProjectCapability Remove="ReferenceManagerCOM" />
-    <ProjectCapability Remove="AssemblyReferences" />
-    <ProjectCapability Remove="ReferenceManagerAssemblies" />
-  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="GenerateTargetFrameworkMonikerAttribute" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
 </Project>
