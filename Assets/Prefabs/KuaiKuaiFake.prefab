@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8721537094937464429}
   - component: {fileID: 8238288658851016085}
   m_Layer: 1
-  m_Name: KuaiKuai
+  m_Name: KuaiKuaiFake
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4787,7 +4787,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6678594698688342302, guid: c4815b801d29047409db1ea6a060ea49, type: 3}
+  - {fileID: 2100000, guid: f16111a24ef81429585803b2a6ce2099, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
