@@ -1226,65 +1226,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4991876271240858029, guid: cf178f1fce5b6fc419737c3201864d8b,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2891255664749529205}
-    - targetCorrespondingSourceObject: {fileID: 4991876271240858029, guid: cf178f1fce5b6fc419737c3201864d8b,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2891255664749529206}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf178f1fce5b6fc419737c3201864d8b, type: 3}
---- !u!1 &2891255664749529203 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4991876271240858029, guid: cf178f1fce5b6fc419737c3201864d8b,
-    type: 3}
-  m_PrefabInstance: {fileID: 2891255664749529202}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2891255664749529204 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3921855586888673084, guid: cf178f1fce5b6fc419737c3201864d8b,
-    type: 3}
-  m_PrefabInstance: {fileID: 2891255664749529202}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2891255664749529203}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fb41bb84f2455447883dc73e48c1346, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2891255664749529205
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2891255664749529203}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fe120c1e1b21544a8d7a0b4fe752b5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  repsRequired: 5
-  upVelThreshold: 0.4
-  downVelThreshold: 0.4
-  enableDebugTrigger: 1
---- !u!114 &2891255664749529206
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2891255664749529203}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9b23485be612b14680485fbc27be9f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startWeight: 10
-  maxWeight: 30
-  swingLocomotion: {fileID: 2891255664749529204}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

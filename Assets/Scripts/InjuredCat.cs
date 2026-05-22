@@ -13,7 +13,7 @@ public class InjuredCat : MonoBehaviour
 
     private void Awake()
     {
-        _renderer = GetComponent<Renderer>();
+        _renderer = GetComponentInChildren<Renderer>();
         if (_renderer != null)
             _renderer.material.color = injuredColor;
     }
@@ -28,13 +28,12 @@ public class InjuredCat : MonoBehaviour
     }
 
     // Cat has a Sphere Collider (Is Trigger=true). Potion has a Rigidbody.
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (_healed) return;
-        if (!other.TryGetComponent<PotionPour>(out var potion)) return;
-        if (!potion.IsPoured) return;
+        if (!other.TryGetComponent<PotionPour>(out _)) return;
 
-        Debug.Log("[InjuredCat] Potion detected while pouring — healing cat!");
+        Debug.Log("[InjuredCat] Potion detected — healing cat!");
         Heal();
     }
 
@@ -45,9 +44,6 @@ public class InjuredCat : MonoBehaviour
 
         if (_renderer != null)
             _renderer.material.color = healedColor;
-
-        // Stand up: reset rotation for placeholder capsule lying on its side
-        transform.rotation = Quaternion.identity;
 
         Debug.Log("[InjuredCat] Cat healed — notifying CatManager.");
         CatManager.Instance?.OnCatSaved();

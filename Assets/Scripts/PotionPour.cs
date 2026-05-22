@@ -11,9 +11,10 @@ public class PotionPour : MonoBehaviour
     [SerializeField] private bool enableDebugTrigger = true;
 
     private Rigidbody _rb;
+    private bool _forcePoured;
 
-    public bool IsPoured  { get; private set; }
     public bool IsHeld    => _rb != null && _rb.isKinematic;
+    public bool IsPoured  => _forcePoured || (IsHeld && transform.up.y < tiltThreshold);
 
     private void Awake() => _rb = GetComponent<Rigidbody>();
 
@@ -21,22 +22,8 @@ public class PotionPour : MonoBehaviour
     {
         if (enableDebugTrigger && Input.GetKeyDown(KeyCode.P))
         {
-            Debug.Log("[PotionPour] Debug key P pressed — force pour state.");
-            IsPoured = true;
-        }
-
-        bool pouringNow = IsHeld && transform.up.y < tiltThreshold;
-
-        if (pouringNow && !IsPoured)
-        {
-            IsPoured = true;
-            Debug.Log("[PotionPour] Potion is being poured! (held + tilted)");
-        }
-        else if (!pouringNow && IsPoured && !Input.GetKey(KeyCode.P))
-        {
-            // Reset when no longer tilting (ignore while debug key held)
-            IsPoured = false;
-            Debug.Log("[PotionPour] Potion returned to upright — pour stopped.");
+            _forcePoured = !_forcePoured;
+            Debug.Log($"[PotionPour] Debug force pour toggled: {_forcePoured}");
         }
     }
 }
