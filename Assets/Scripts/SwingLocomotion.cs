@@ -33,6 +33,7 @@ public class SwingLocomotion : MonoBehaviour
     private CharacterController _cc;
     private Transform _leftHand, _rightHand, _centerEye;
     private Vector3 _leftPrevPos, _rightPrevPos;
+    private Vector3 _prevRigPos;
     private float _currentSpeed, _verticalVelocity;
 
     private float _runtimeMaxSpeed;
@@ -57,6 +58,7 @@ public class SwingLocomotion : MonoBehaviour
     {
         _leftPrevPos  = _leftHand.position;
         _rightPrevPos = _rightHand.position;
+        _prevRigPos   = transform.position;
     }
 
     // Called by BodyShapeManager whenever weight changes; t=0 lightest, t=1 heaviest
@@ -83,9 +85,13 @@ public class SwingLocomotion : MonoBehaviour
 
         bool wasWalking = _currentSpeed > 0.05f;
 
+        // subtract rig's own displacement so locomotion doesn't feed back into swing detection
+        Vector3 rigDisplacement = transform.position - _prevRigPos;
+        _prevRigPos = transform.position;
+
         // always update prev positions — prevents velocity spike when re-enabling locomotion
-        Vector3 leftVel  = (_leftHand.position  - _leftPrevPos)  / dt;
-        Vector3 rightVel = (_rightHand.position - _rightPrevPos) / dt;
+        Vector3 leftVel  = (_leftHand.position  - _leftPrevPos  - rigDisplacement) / dt;
+        Vector3 rightVel = (_rightHand.position - _rightPrevPos - rigDisplacement) / dt;
         _leftPrevPos  = _leftHand.position;
         _rightPrevPos = _rightHand.position;
 
@@ -118,6 +124,10 @@ public class SwingLocomotion : MonoBehaviour
             if (effectiveCombined > _runtimeDeadzone)
                 swingFraction = Mathf.Clamp01(
                     (effectiveCombined - _runtimeDeadzone) / (maxSwingVelocity - _runtimeDeadzone));
+
+#if UNITY_EDITOR
+            Debug.Log($"[Swing] rigΔ={rigDisplacement.magnitude:F4} leftZ={leftZ:F3} rightZ={rightZ:F3} combined={effectiveCombined:F3} fraction={swingFraction:F3} speed={_currentSpeed:F3}");
+#endif
 
             _currentSpeed = Mathf.Lerp(_currentSpeed, swingFraction * _runtimeMaxSpeed,
                                        speedSmoothing * dt);
