@@ -20,6 +20,8 @@ public class CatManager : MonoBehaviour
 
     public bool CatSaved { get; private set; }
 
+    public static event System.Action OnCatRescued;
+
     private Transform _playerHead;
     private Transform _rigTransform;
     private Animator _catAnimator;
@@ -66,6 +68,7 @@ public class CatManager : MonoBehaviour
         if (CatSaved) return;
 
         CatSaved = true;
+        OnCatRescued?.Invoke();
         _followEnabled = true;
 
         if (catTransform != null && _playerHead != null)
